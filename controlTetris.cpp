@@ -40,16 +40,21 @@ void ControlTetris::caerPieza(){
 	mt->pintaPiezaEn(*p,posY,posX);
 	mt->vaciaVector();
 	incrementarPuntos(50);
-	limpiaLineas(posY + (p->dimension() - 1));
+	limpiaLineas();
 	siguientePieza();
 }
 
-void ControlTetris::limpiaLineas(short int fila){
-	while(mt->detectaLinea(fila)){
-		incrementarLineas(1);
-		incrementarPuntos(1000);
-		mt->borraLinea(fila);
-		fila--;
+void ControlTetris::limpiaLineas(){
+	int fila = mt->alto() - 1;
+	bool linea = false;
+	while(fila >= 0 && !linea){
+		if(mt->detectaLinea(fila)){
+			incrementarLineas(1);
+			incrementarPuntos(1000);
+			mt->borraLinea(fila);
+		}
+		else
+			fila--;
 	}
 }
 

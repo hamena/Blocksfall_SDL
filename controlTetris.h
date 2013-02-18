@@ -75,9 +75,8 @@ class ControlTetris{
 		/// Cambia la pieza actual por la siguiente y toma una nueva como siguiente.
 		void siguientePieza();
 		
-		/// Limpia las lineas completas desde un índice hasta el fin.
-		/// \param fila Fila a partir se borraran las lineas completas.
-		void limpiaLineas(short int fila);
+		/// Limpia las lineas completas.
+		void limpiaLineas();
 		
 		/// Incrementa el nivel de dificultad.
 		inline void subirNivel();
@@ -130,7 +129,7 @@ void ControlTetris::bajarPieza(){
 		mt->pintaPiezaEn(*p,posY,posX);
 		mt->vaciaVector();
 		incrementarPuntos(50);
-		limpiaLineas(posY + (p->dimension() - 1));
+		limpiaLineas();
 		siguientePieza();
 	}
 }
