@@ -71,11 +71,12 @@ bool MatrizTetris::pintaPiezaEn(const Pieza& p, unsigned y, unsigned x){
 
 bool MatrizTetris::detectaColision(const vEstado& v, unsigned y, unsigned x){
 	for(unsigned i=0 ; i<v.size() ; i++)
-		//if(y + v[i].first < m.dimensionY() && x + v[i].second < m.dimensionX())
+		if((y + v[i].first) < m.dimensionY() && (x + v[i].second) < m.dimensionX()){
 			if(m[y + v[i].first][x + v[i].second])
 				return true;
-		//else
-			//return true;
+		}
+		else
+			return true;
 	
 	return false;
 }
@@ -102,7 +103,7 @@ void MatrizTetris::borraPieza(){
 		d.y = YI + (posY + v[i].first)*TAMBLO;
 		d.w = bloque->w;
 		d.h = bloque->h;
-		SDL_FillRect(pantalla,&d,SDL_MapRGB(pantalla->format,0,0,0));
+		SDL_FillRect(pantalla,&d,SDL_MapRGB(pantalla->format,75,70,70));
 		m[posY + v[i].first][posX + v[i].second] = false;
 	}
 }
@@ -154,7 +155,7 @@ void MatrizTetris::borraLinea(unsigned linea){
 		d.y = YI + j*TAMBLO;
 		d.w = bloque->w;
 		d.h = bloque->h;
-		SDL_FillRect(pantalla,&d,SDL_MapRGB(pantalla->format,0,0,0));
+		SDL_FillRect(pantalla,&d,SDL_MapRGB(pantalla->format,75,70,70));
 		m[linea][j] = false;
 	}
 	
