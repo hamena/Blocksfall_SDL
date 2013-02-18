@@ -8,6 +8,9 @@
 #define TAMBLO 22
 #define XI 20
 #define YI 20
+#define CFR 75		// Color del fondo RED
+#define CFG 70		// Color del fondo GREEN
+#define CFB 70		// Color del fondo BLUE
 
 #include <iostream>
 #include <curses.h>

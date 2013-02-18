@@ -103,7 +103,7 @@ void MatrizTetris::borraPieza(){
 		d.y = YI + (posY + v[i].first)*TAMBLO;
 		d.w = bloque->w;
 		d.h = bloque->h;
-		SDL_FillRect(pantalla,&d,SDL_MapRGB(pantalla->format,75,70,70));
+		SDL_FillRect(pantalla,&d,SDL_MapRGB(pantalla->format,CFR,CFG,CFB));
 		m[posY + v[i].first][posX + v[i].second] = false;
 	}
 }
@@ -155,7 +155,7 @@ void MatrizTetris::borraLinea(unsigned linea){
 		d.y = YI + j*TAMBLO;
 		d.w = bloque->w;
 		d.h = bloque->h;
-		SDL_FillRect(pantalla,&d,SDL_MapRGB(pantalla->format,75,70,70));
+		SDL_FillRect(pantalla,&d,SDL_MapRGB(pantalla->format,CFR,CFG,CFB));
 		m[linea][j] = false;
 	}
 	
