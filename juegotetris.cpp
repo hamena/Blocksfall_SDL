@@ -107,13 +107,7 @@ void JuegoTetris::iniciar(){
 			}
 		}catch(ControlTetris::GameOver){
 			finDelJuego();
-			nodelay(stdscr, FALSE);
-			char continuar = getch();
-			nodelay(stdscr, TRUE);
-			if(continuar == 'n' || continuar == 'N')
-				LETSPLAYBABY = false;
-			else
-				preparar();
+			LETSPLAYBABY = false;
 		}
 	}
 	finCurses();
@@ -145,18 +139,8 @@ void JuegoTetris::mostrarControles() const{
 }
 
 void JuegoTetris::finDelJuego(){
-	clearScreen();
 	mt->imprimeMatriz();
-	usleep(4000000);
-	
-	/*printw("\n\t¿Tan solo ");
-	printw((char)ct->getPuntos().numero());
-	printw(" puntos y ");
-	printw((char)ct->getLineas().numero());
-	printw(" lineas?\n");
-	printw("\t\nNo creo que lo vayas a superar pero aun asi...\n");*/
-	printw("Otra partida? [s/n]: ");
-	refresh();
+	SDL_Delay(4000);
 }
 
 JuegoTetris::~JuegoTetris(){
