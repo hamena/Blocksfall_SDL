@@ -51,6 +51,8 @@ bool MatrizTetris::pintaPiezaEn(const Pieza& p, unsigned y, unsigned x){
 	if(!v.empty()) borraPieza();
 	if(!detectaColision(p.vectorEstado(),y,x)){
 		SDL_Rect d;
+		d.w = bloque->w;
+		d.h = bloque->h;
 		posX = x;
 		posY = y;
 		v = p.vectorEstado();
@@ -59,8 +61,6 @@ bool MatrizTetris::pintaPiezaEn(const Pieza& p, unsigned y, unsigned x){
 			
 			d.x = XI + (x + v[i].second)*TAMBLO;
 			d.y = YI + (y + v[i].first)*TAMBLO;
-			d.w = bloque->w;
-			d.h = bloque->h;
 			SDL_BlitSurface(bloque,NULL,pantalla,&d);
 			m[y + v[i].first][x + v[i].second] = true;
 		}
@@ -81,28 +81,21 @@ bool MatrizTetris::detectaColision(const vEstado& v, unsigned y, unsigned x){
 	return false;
 }
 
-bool MatrizTetris::detectaLinea(short int& fila){
-	unsigned cont = 1;
-	fila = m.dimensionY()-1;
-	while(fila > 0){
-		while(m[fila][cont])
-			if(cont == m.dimensionX()) 
-				return true;
-			else 
-				cont++;
-		cont = 1;
-		fila--;
+bool MatrizTetris::detectaLinea(int fila){
+	for(unsigned j=0 ; j<m.dimensionX() ; j++){
+		if(!m[fila][j])
+			return false;
 	}
-	return false;
+	return true;
 }
 
 void MatrizTetris::borraPieza(){
 	SDL_Rect d;
+	d.w = bloque->w;
+	d.h = bloque->h;
 	for(unsigned i=0 ; i<v.size() ; i++){
 		d.x = XI + (posX + v[i].second)*TAMBLO;
 		d.y = YI + (posY + v[i].first)*TAMBLO;
-		d.w = bloque->w;
-		d.h = bloque->h;
 		SDL_FillRect(pantalla,&d,SDL_MapRGB(pantalla->format,CFR,CFG,CFB));
 		m[posY + v[i].first][posX + v[i].second] = false;
 	}
@@ -150,33 +143,42 @@ void MatrizTetris::pintaGameOver(){
 
 void MatrizTetris::borraLinea(unsigned linea){
 	SDL_Rect d;
+	d.w = bloque->w;
+	d.h = bloque->h;
+	d.y = YI + linea*TAMBLO;
 	for(unsigned j=0 ; j<m.dimensionX() ; j++){
 		d.x = XI + j*TAMBLO;
-		d.y = YI + j*TAMBLO;
-		d.w = bloque->w;
-		d.h = bloque->h;
 		SDL_FillRect(pantalla,&d,SDL_MapRGB(pantalla->format,CFR,CFG,CFB));
 		m[linea][j] = false;
 	}
-	
 	bajarTodo(linea-1);
 }
 
 void MatrizTetris::bajarTodo(unsigned linea){
-	/*SDL_Rect d;
+	SDL_Rect d;
+	d.w = bloque->w;
+	d.h = bloque->h;
 	
-	for(unsigned i=linea ; i>0 ; i--)
-		for(unsigned j=0 ; j<m1.dimensionX() ; j++){
-			d.x = XI + (x + v[i].second)*TAMBLO;
-			d.y = YI + (y + v[i].first)*TAMBLO;
-			d.w = bloque->w;
-			d.h = bloque->h;
-			SDL_FillRect(pantalla,&d,SDL_MapRGB(pantalla->format,0,0,0));
-			m[i+1][j] = m[i][j];
-		}*/
-	
-	//for(unsigned j=0 ; j<m1.dimensionX() ; j++)
-		//m1[1][j] = ' ';
+	for(int i=linea ; i>=0 ; i--){
+		d.y = YI + (i+1)*TAMBLO;
+		for(unsigned j=0 ; j<m.dimensionX() ; j++){
+			d.x = XI + j*TAMBLO;
+			if(m[i][j]){
+				SDL_BlitSurface(bloque,NULL,pantalla,&d);
+				m[i+1][j] = true;
+			}
+			else{
+				SDL_FillRect(pantalla,&d,SDL_MapRGB(pantalla->format,CFR,CFG,CFB));
+				m[i+1][j] = false;
+			}
+		}
+	}
+	d.y = YI;
+	for(unsigned j=0 ; j<m.dimensionX() ; j++){
+		d.x = XI + j*TAMBLO;
+		SDL_FillRect(pantalla,&d,SDL_MapRGB(pantalla->format,CFR,CFG,CFB));
+		m[0][j] = false;
+	}
 }
 
 void MatrizTetris::imprimeMatriz() const{
