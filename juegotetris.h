@@ -13,7 +13,7 @@
 using std::cout;
 using std::endl;
 
-bool tocaMover(Uint32, int);
+bool tocaMover(Uint32, unsigned);
 
 class JuegoTetris{
 	public:
@@ -26,6 +26,7 @@ class JuegoTetris{
 		MatrizTetris* mt;
 		ControlTetris* ct;
 		Piezas* piezas;
+		Uint32 tiempo;
 		bool LETSPLAYBABY;
 		bool curses;
 		unsigned cont;

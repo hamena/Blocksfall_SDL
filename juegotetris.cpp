@@ -1,6 +1,6 @@
 #include "juegotetris.h"
 
-bool tocaMover(Uint32 t_viejo, int t_espera){
+bool tocaMover(Uint32 t_viejo, unsigned t_espera){
 	Uint32 t = SDL_GetTicks() - t_viejo;
 	return t >= t_espera;
 }
@@ -9,6 +9,7 @@ JuegoTetris::JuegoTetris() :
 	delay(NULL),
 	mt(NULL),
 	ct(NULL),
+	tiempo(0),
 	LETSPLAYBABY(false),
 	curses(false),
 	cont(0)
@@ -19,11 +20,11 @@ void JuegoTetris::preparar(){
 	
 	printw("Preparando vector de tiempos... "); refresh();
 	if(!delay){
-		int rest = 200;
+		int rest = 1000;
 		delay = new vector<unsigned>(9,0);
 		for(unsigned i=0 ; i<delay->size() ; i++){
 			delay->at(i) = rest;
-			rest -= 20;
+			rest -= 100;
 		}
 	}
 	printw("OK\n"); refresh();
@@ -67,6 +68,7 @@ void JuegoTetris::preparar(){
 
 void JuegoTetris::iniciar(){
 	if(!curses) iniciaCurses();
+	tiempo = SDL_GetTicks();
 	while(LETSPLAYBABY){
 		try{
 			if(ControlTetris::kbhit()){		//KBHIT
@@ -96,14 +98,9 @@ void JuegoTetris::iniciar(){
 				clearScreen();
 				mt->imprimeMatriz();
 			}
-			if(cont<5){
-				cont++;
-				SDL_Delay(delay->at( ct->getNivel() ) );
-			}
-			else{
+			if(tocaMover(tiempo,delay->at(ct->getNivel()-1))){
 				ct->bajarPieza();
-				cont = 0;
-				clearScreen();
+				tiempo = SDL_GetTicks();
 				mt->imprimeMatriz();
 			}
 		}catch(ControlTetris::GameOver){
@@ -120,7 +117,8 @@ void JuegoTetris::iniciar(){
 	finCurses();
 }
 
-void JuegoTetris::clearScreen(){ clear(); }
+void JuegoTetris::clearScreen(){ //clear(); 
+}
 
 void JuegoTetris::iniciaCurses(){
 	initscr();
