@@ -68,35 +68,37 @@ void JuegoTetris::preparar(){
 
 void JuegoTetris::iniciar(){
 	if(!curses) iniciaCurses();
+	SDL_Event event;
 	tiempo = SDL_GetTicks();
 	while(LETSPLAYBABY){
 		try{
-			if(ControlTetris::kbhit()){		//KBHIT
-				switch(getch()){
-					case 's':
-						ct->bajarPieza();
-						break;
-					case 'w':
-						ct->rotarPieza();
-						break;
-					case 'a':
-						ct->moverIzqda();
-						break;
-					case 'd':
-						ct->moverDrcha();
-						break;
-					case ' ':
-						ct->caerPieza();
-						break;
-					case 'p':
-						ct->pause();
-						break;
-					case '0':
-						LETSPLAYBABY = false;
-						break;
+			while(SDL_PollEvent(&event)) {
+				if(event.type == SDL_KEYDOWN){		//KBHIT
+					switch(event.key.keysym.sym){
+						case SDLK_DOWN:
+							ct->bajarPieza();
+							break;
+						case SDLK_UP:
+							ct->rotarPieza();
+							break;
+						case SDLK_LEFT:
+							ct->moverIzqda();
+							break;
+						case SDLK_RIGHT:
+							ct->moverDrcha();
+							break;
+						case SDLK_SPACE:
+							ct->caerPieza();
+							break;
+						//case SDLK_p:
+							//ct->pause();
+							//break;
+						case SDLK_ESCAPE:
+							LETSPLAYBABY = false;
+							break;
+					}
+					mt->imprimeMatriz();
 				}
-				clearScreen();
-				mt->imprimeMatriz();
 			}
 			if(tocaMover(tiempo,delay->at(ct->getNivel()-1))){
 				ct->bajarPieza();
@@ -146,7 +148,6 @@ void JuegoTetris::finDelJuego(){
 	clearScreen();
 	mt->imprimeMatriz();
 	usleep(4000000);
-	clearScreen();					//LIMPIA PANTALLA
 	
 	/*printw("\n\t¿Tan solo ");
 	printw((char)ct->getPuntos().numero());
