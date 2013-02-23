@@ -11,14 +11,11 @@ JuegoTetris::JuegoTetris() :
 	ct(NULL),
 	tiempo(0),
 	LETSPLAYBABY(false),
-	curses(false),
 	cont(0)
 {}
 
 void JuegoTetris::preparar(){
-	if(!curses) iniciaCurses();
-	
-	printw("Preparando vector de tiempos... "); refresh();
+	//printw("Preparando vector de tiempos... "); refresh();
 	if(!delay){
 		int rest = 1000;
 		delay = new vector<unsigned>(9,0);
@@ -27,47 +24,46 @@ void JuegoTetris::preparar(){
 			rest -= 100;
 		}
 	}
-	printw("OK\n"); refresh();
+	//printw("OK\n"); refresh();
 	
-	printw("Preparando tablero del tetris... "); refresh();
+	//printw("Preparando tablero del tetris... "); refresh();
 	if(mt) delete mt;
 	mt = new MatrizTetris();
-	printw("OK\n"); refresh();
+	//printw("OK\n"); refresh();
 	
-	printw("Preparando piezas...\n"); refresh();
+	//printw("Preparando piezas...\n"); refresh();
 	piezas = new Piezas;
-	printw("\tPiezaL..."); refresh();
+	//printw("\tPiezaL..."); refresh();
 	inicializar(piezas->piezaL);
-	printw("OK\n");
-	printw("\tPiezaL2..."); refresh();
+	//printw("OK\n");
+	//printw("\tPiezaL2..."); refresh();
 	inicializar(piezas->piezaL2);
-	printw("OK\n");
-	printw("\tPiezaS..."); refresh();
+	//printw("OK\n");
+	//printw("\tPiezaS..."); refresh();
 	inicializar(piezas->piezaS);
-	printw("OK\n");
-	printw("\tPiezaS2..."); refresh();
+	//printw("OK\n");
+	//printw("\tPiezaS2..."); refresh();
 	inicializar(piezas->piezaS2);
-	printw("OK\n");
-	printw("\tPiezaT..."); refresh();
+	//printw("OK\n");
+	//printw("\tPiezaT..."); refresh();
 	inicializar(piezas->piezaT);
-	printw("OK\n");
-	printw("\tPiezaC..."); refresh();
+	//printw("OK\n");
+	//printw("\tPiezaC..."); refresh();
 	inicializar(piezas->piezaC);
-	printw("OK\n");
-	printw("\tPiezaP..."); refresh();
+	//printw("OK\n");
+	//printw("\tPiezaP..."); refresh();
 	inicializar(piezas->piezaP);
-	printw("OK\n"); refresh();
+	//printw("OK\n"); refresh();
 	
-	printw("Preparando control del tetris... "); refresh();
+	//printw("Preparando control del tetris... "); refresh();
 	if(ct) delete ct;
 	ct = new ControlTetris(*mt,*piezas);
-	printw("OK\n"); refresh();
+	//printw("OK\n"); refresh();
 	
 	LETSPLAYBABY = true;
 }
 
 void JuegoTetris::iniciar(){
-	if(!curses) iniciaCurses();
 	SDL_Event event;
 	tiempo = SDL_GetTicks();
 	while(LETSPLAYBABY){
@@ -110,32 +106,6 @@ void JuegoTetris::iniciar(){
 			LETSPLAYBABY = false;
 		}
 	}
-	finCurses();
-}
-
-void JuegoTetris::clearScreen(){ //clear(); 
-}
-
-void JuegoTetris::iniciaCurses(){
-	initscr();
-	noecho();
-	cbreak();
-	nodelay(stdscr, TRUE);
-	curses = true;
-}
-
-void JuegoTetris::finCurses(){
-	endwin();
-	curses = false;
-}
-
-void JuegoTetris::mostrarControles() const{
-	printw("\t# CONTROLES #");
-	printw("\n-Izquierda: a\n-Derecha: d\n-Rotar: w\n-Bajar: s\n-Soltar pieza: Espacio\n\n");
-	refresh();
-	nodelay(stdscr, FALSE);
-	getch();
-	nodelay(stdscr, TRUE);
 }
 
 void JuegoTetris::finDelJuego(){
@@ -144,7 +114,6 @@ void JuegoTetris::finDelJuego(){
 }
 
 JuegoTetris::~JuegoTetris(){
-	if(curses) finCurses();
 	if(delay) delete delay;
 	if(mt) delete mt;
 	if(ct) delete ct;

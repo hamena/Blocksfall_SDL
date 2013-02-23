@@ -5,7 +5,6 @@
 
 #include <iostream>
 #include <unistd.h>
-#include <curses.h>
 #include <SDL/SDL.h>
 #include "matriztetris.h"
 #include "controlTetris.h"
@@ -28,13 +27,8 @@ class JuegoTetris{
 		Piezas* piezas;
 		Uint32 tiempo;
 		bool LETSPLAYBABY;
-		bool curses;
 		unsigned cont;
 		
-		void clearScreen();
-		void iniciaCurses();
-		void finCurses();
-		void mostrarControles() const;
 		void finDelJuego();
 };
 

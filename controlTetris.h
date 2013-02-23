@@ -4,7 +4,6 @@
 
 #include <ctime>
 #include <cstdlib>
-#include <curses.h>
 #include "matriztetris.h"
 #include "pieza.h"
 
@@ -44,10 +43,6 @@ class ControlTetris{
 		/// Observa el nivel.
 		/// \return Nivel actual.
 		unsigned getNivel() const{ return nivel; }
-		
-		/// Detecta si una tecla fué pulsada.
-		/// \return Verdadero si una tecla fué pulsada, en caso contrario falso.
-		static bool kbhit();
 		
 		class RandomException;
 		class GameOver;
