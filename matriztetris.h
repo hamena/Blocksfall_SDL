@@ -5,9 +5,9 @@
 #define XM2 6
 #define YM2 17
 
-#define TAMBLO 22
-#define XI 20
-#define YI 20
+#define TAMBLO 22	// Tamaño en píxeles de un bloque
+#define XI 20		// Pixeles del marco eje x
+#define YI 20		// Pixeles del marco eje y
 #define CFR 75		// Color del fondo RED
 #define CFG 70		// Color del fondo GREEN
 #define CFB 70		// Color del fondo BLUE
@@ -69,10 +69,13 @@ class MatrizTetris{
 		/// Detecta si hay una línea completa en una fila.
 		/// \param fila Indice donde detectar si hay línea completa.
 		/// \return Verdadero si hay linea completa, falso si no.
-		bool detectaLinea(short int& fila);
+		bool detectaLinea(int fila);
 		
 		/// Imprime la matriz completa a través de funciones de curses.h
 		void imprimeMatriz() const;
+		
+		int alto() const{ return m.dimensionY(); }
+		int ancho() const{ return m.dimensionX(); }
 		
 		/// Imprime en el flujo de salida la matriz completa.
 		/// \param os Flujo de salida.
