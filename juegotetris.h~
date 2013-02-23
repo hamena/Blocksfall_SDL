@@ -13,7 +13,7 @@
 using std::cout;
 using std::endl;
 
-bool tocaMover(Uint32, int);
+
 
 class JuegoTetris{
 	public:

@@ -1,10 +1,5 @@
 #include "juegotetris.h"
 
-bool tocaMover(Uint32 t_viejo, int t_espera){
-	Uint32 t = SDL_GetTicks() - t_viejo;
-	return t >= t_espera;
-}
-
 JuegoTetris::JuegoTetris() : 
 	delay(NULL),
 	mt(NULL),
