@@ -14,11 +14,11 @@ void JuegoTetris::preparar(){
 	
 	printw("Preparando vector de tiempos... "); refresh();
 	if(!delay){
-		int rest = 200000;
+		int rest = 200;
 		delay = new vector<unsigned>(9,0);
 		for(unsigned i=0 ; i<delay->size() ; i++){
 			delay->at(i) = rest;
-			rest -= 20000;
+			rest -= 20;
 		}
 	}
 	printw("OK\n"); refresh();
@@ -93,7 +93,7 @@ void JuegoTetris::iniciar(){
 			}
 			if(cont<5){
 				cont++;
-				usleep(delay->at( ct->getNivel() ) );
+				SDL_Delay(delay->at( ct->getNivel() ) );
 			}
 			else{
 				ct->bajarPieza();

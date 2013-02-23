@@ -6,6 +6,7 @@
 #include <iostream>
 #include <unistd.h>
 #include <curses.h>
+#include <SDL/SDL.h>
 #include "matriztetris.h"
 #include "controlTetris.h"
 
