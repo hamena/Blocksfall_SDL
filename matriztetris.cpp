@@ -40,7 +40,7 @@ void MatrizTetris::inicializaSDL(){
 		exit(1);
 	}
 	
-	pantalla = SDL_SetVideoMode(640,480,24,SDL_HWSURFACE);
+	pantalla = SDL_SetVideoMode(640,480,24,SDL_SWSURFACE|SDL_DOUBLEBUF);
 	if(pantalla == NULL){
 		std::cout<<"No se puede inicializar el modo gráfico: "<<SDL_GetError()<<std::endl;
 		exit(1);
