@@ -171,8 +171,10 @@ void ControlTetris::cambiarNivel(unsigned n){
 }
 
 void ControlTetris::subirNivel(){
-	nivel++;
-	mt->pintaNivel(nivel);
+	if(nivel < 9){
+		nivel++;
+		mt->pintaNivel(nivel);
+	}
 }
 
 #endif	// CONTROL_TETRIS_H_
