@@ -2,12 +2,37 @@
 
 MatrizTetris::MatrizTetris(unsigned alto, unsigned ancho) : 
 	m( Matriz<bool>(alto,ancho,NULL) )
+	//c(ch)
 {
+	//inicializaM1();
+	//inicializaM2();
+	
 	inicializaSDL();
 	fondo = SDL_LoadBMP("recursos/fondo.bmp");
 	bloque = SDL_LoadBMP("recursos/bloque.bmp");
 	SDL_BlitSurface(fondo,NULL,pantalla,NULL);
 }
+
+/*void MatrizTetris::inicializaM1(){
+	m1.rellenaFila(0,c);
+	m1.rellenaFila(m1.dimensionY()-1,c);
+	m1.rellenaColumna(0,c);
+	m1.rellenaColumna(m1.dimensionX()-1,c);
+}*/
+
+/*void MatrizTetris::inicializaM2(){
+	for(unsigned i=0 ; i<m2.dimensionY() ; i++)
+		for(unsigned j=0 ; j<m2.dimensionX() ; j++)
+			m2[i][j] = ' ';
+	m2.rellenaColumna(m2.dimensionX()-1,c);
+	m2.rellenaFila(0,c);
+	m2.rellenaFila(7,c);
+	m2.rellenaFila(12,c);
+	m2.rellenaFila(16,c);
+	m2[8][0] = 'S'; m2[8][1] = 'c'; m2[8][2] = 'o'; m2[8][3] = 'r'; m2[8][4] = 'e';
+	m2[10][0] = 'L'; m2[10][1] = 'n'; m2[10][2] = 'a'; m2[10][3] = 's';
+	m2[13][0] = 'L'; m2[13][1] = 'e'; m2[13][2] = 'v'; m2[13][3] = 'e'; m2[13][4] = 'l';
+}*/
 
 void MatrizTetris::inicializaSDL(){
 	if(SDL_Init(SDL_INIT_VIDEO) < 0){

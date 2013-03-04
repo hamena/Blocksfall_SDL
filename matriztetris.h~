@@ -2,6 +2,9 @@
 #ifndef MATRIZ_TETRIS_H_
 #define MATRIZ_TETRIS_H_
 
+#define XM2 6
+#define YM2 17
+
 #define TAMBLO 22	// Tamaño en píxeles de un bloque
 #define XI 20		// Pixeles del marco eje x
 #define YI 20		// Pixeles del marco eje y
@@ -86,6 +89,9 @@ class MatrizTetris{
 		}
 		
 	private:
+		//Matriz<char>	m1,		///< Matriz que representa el tablero de juego.
+		//				m2;		///< Matriz que contiene la información sobre la partida.
+		//char 			c;		///< Carácter con el que se pintarán los bordes. Por defecto 'X'.
 		vEstado 		v,		///< Vector que almacena el estado de la pieza actual.
 						vSig;	///< Vector que almacena el estado de la siguiente pieza.
 		unsigned 		posX,	///< Posición de la pieza actual en el eje X.
@@ -95,6 +101,12 @@ class MatrizTetris{
 		SDL_Surface *pantalla, *fondo, *bloque;
 		
 		void inicializaSDL();
+		
+		/// Método auxiliar para inicializar el tablero de juego.
+		//void inicializaM1();
+		
+		/// Método auxiliar para inicializar la información sobre la partida.
+		//void inicializaM2();
 		
 		/// Borra del tablero la pieza actual.
 		void borraPieza();
