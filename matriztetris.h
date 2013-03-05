@@ -2,6 +2,9 @@
 #ifndef MATRIZ_TETRIS_H_
 #define MATRIZ_TETRIS_H_
 
+#define VENTANA_W 390	// Resolución de la ventana
+#define VENTANA_H 480	// Resolución de la ventana
+#define BPP 24		// Bits por píxeles
 #define TAMBLO 22	// Tamaño en píxeles de un bloque
 #define XI 20		// Pixeles del marco eje x
 #define YI 20		// Pixeles del marco eje y
