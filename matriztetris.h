@@ -8,7 +8,6 @@
 #define TAMBLO 22	// Tamaño en píxeles de un bloque
 #define XI 20		// Pixeles del marco eje x
 #define YI 20		// Pixeles del marco eje y
-#define ALIN 260	// Alineación de indicadores
 #define XS 282		// X Pieza siguiente	
 #define YS 31		// Y Pieza siguiente
 #define XIND 387	// X de los indicadores
@@ -18,6 +17,9 @@
 #define CFR 75		// Color del fondo RED
 #define CFG 70		// Color del fondo GREEN
 #define CFB 70		// Color del fondo BLUE
+#define CFIR 128	// Color del fondo de indicadores RED
+#define CFIG 122	// Color del fondo de indicadores GREEN
+#define CFIB 122	// Color del fondo de indicadores BLUE
 
 #include <iostream>
 #include <curses.h>
@@ -108,9 +110,6 @@ class MatrizTetris{
 		
 		/// Borra del tablero la pieza actual.
 		void borraPieza();
-		
-		/// Borra la siguiente pieza mostrada.
-		void borraPiezaSig();
 		
 		/// Baja todo lo que este en el tablero desde el comiezo hasta un índice 1 posición.
 		/// \param linea Indice que marca el máximo.

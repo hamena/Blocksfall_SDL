@@ -75,15 +75,21 @@ void MatrizTetris::borraPieza(){
 }
 
 void MatrizTetris::pintaPiezaSig(const Pieza& p){
-	/*if(!vSig.empty()) borraPiezaSig();
+	SDL_Rect dest;
+	dest.x = 260;
+	dest.y = YS;
+	dest.w = TAMSIG;
+	dest.h = TAMSIG;
+	SDL_FillRect(pantalla,&dest,SDL_MapRGB(pantalla->format,CFIR,CFIG,CFIB));
+	
+	dest.w = TAMBLO;
+	dest.h = TAMBLO;
 	vSig = p.vectorEstado();
-	for(unsigned i=0 ; i<vSig.size() ; i++)
-		m2[2 + vSig[i].first][1 + vSig[i].second] = '#';*/
-}
-
-void MatrizTetris::borraPiezaSig(){
-	/*for(unsigned i=0 ; i<vSig.size() ; i++)
-		m2[2 + vSig[i].first][1 + vSig[i].second] = ' ';*/
+	for(unsigned i=0 ; i<vSig.size() ; i++){
+		dest.x = XS + (vSig[i].second * TAMBLO);
+		dest.y = YS + (vSig[i].first * TAMBLO);
+		SDL_BlitSurface(bloque,NULL,pantalla,&dest);
+	}
 }
 
 void MatrizTetris::pintaPuntos(const Contador& c){
