@@ -8,6 +8,12 @@
 #define TAMBLO 22	// Tamaño en píxeles de un bloque
 #define XI 20		// Pixeles del marco eje x
 #define YI 20		// Pixeles del marco eje y
+#define XS 282		// X Pieza siguiente	
+#define YS 31		// Y Pieza siguiente
+#define XIND 387	// X de los indicadores
+#define YP 205		// Y del indicador PUNTOS
+#define YN 320		// Y del indicador de NIVEL
+#define YL 425		// Y del indicador de LINEAS
 #define CFR 75		// Color del fondo RED
 #define CFG 70		// Color del fondo GREEN
 #define CFB 70		// Color del fondo BLUE
