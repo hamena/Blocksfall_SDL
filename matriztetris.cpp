@@ -4,22 +4,44 @@ MatrizTetris::MatrizTetris(unsigned alto, unsigned ancho) :
 	m( Matriz<bool>(alto,ancho,NULL) )
 {
 	inicializaSDL();
+	inicializaTTF();
 	fondo = SDL_LoadBMP("recursos/fondo.bmp");
 	bloque = SDL_LoadBMP("recursos/bloque.bmp");
 	SDL_BlitSurface(fondo,NULL,pantalla,NULL);
 }
 
 void MatrizTetris::inicializaSDL(){
+	cout<<"\tInicializando SDL...";
 	if(SDL_Init(SDL_INIT_VIDEO) < 0){
-		std::cout<<"No se pudo iniciar SDL: "<<SDL_GetError()<<std::endl;
-		exit(1);
-	}
+		cout<<"FAIL"<<endl;
+	}else
+		cout<<"OK"<<endl;
 	
+	cout<<"\tInicializando ventana...";
 	pantalla = SDL_SetVideoMode(VENTANA_W,VENTANA_H,BPP,SDL_SWSURFACE|SDL_DOUBLEBUF);
 	if(pantalla == NULL){
-		std::cout<<"No se puede inicializar el modo gráfico: "<<SDL_GetError()<<std::endl;
-		exit(1);
-	}
+		cout<<"FAIL"<<endl;
+	}else
+		cout<<"OK"<<endl;
+}
+
+void MatrizTetris::inicializaTTF(){
+	cout<<"\tInicializando TTF...";
+	if(TTF_Init() < 0){
+		cout<<"FAIL"<<endl;
+	}else
+		cout<<"OK"<<endl;
+	
+	cout<<"\tCargando fuentes..."<<endl;
+	cout<<"\t\tfuente60...";
+	fuente60 = TTF_OpenFont("recursos/Russian.ttf",60);
+	if(!fuente60) cout<<"FAIL"<<endl;
+	else cout<<"OK"<<endl;
+	
+	cout<<"\t\tfuente40...";
+	fuente40 = TTF_OpenFont("recursos/Russian.ttf",40);
+	if(!fuente40) cout<<"FAIL"<<endl;
+	else cout<<"OK"<<endl;
 }
 
 bool MatrizTetris::pintaPiezaEn(const Pieza& p, unsigned y, unsigned x){
@@ -78,8 +100,8 @@ void MatrizTetris::pintaPiezaSig(const Pieza& p){
 	SDL_Rect dest;
 	dest.x = 260;
 	dest.y = YS;
-	dest.w = TAMSIG;
-	dest.h = TAMSIG;
+	dest.w = 110;
+	dest.h = 110;
 	SDL_FillRect(pantalla,&dest,SDL_MapRGB(pantalla->format,CFIR,CFIG,CFIB));
 	
 	dest.w = TAMBLO;

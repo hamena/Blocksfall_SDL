@@ -25,12 +25,14 @@
 #include <curses.h>
 #include <string>
 #include <SDL/SDL.h>
+#include <SDL/SDL_ttf.h>
 #include "matriz.h"
 #include "pieza.h"
 #include "contador.h"
 
 using std::ostream;
 using std::endl;
+using std::cout;
 using std::string;
 
 /// Unificación del tablero de juego y la información de la partida en una sola entidad.
@@ -95,6 +97,11 @@ class MatrizTetris{
 		~MatrizTetris(){
 			SDL_FreeSurface(fondo);
 			SDL_FreeSurface(bloque);
+			SDL_FreeSurface(textoPuntos);
+			SDL_FreeSurface(textoNivel);
+			SDL_FreeSurface(textoLineas);
+			TTF_CloseFont(fuente60);
+			TTF_CloseFont(fuente40);
 		}
 		
 	private:
@@ -105,8 +112,11 @@ class MatrizTetris{
 						
 		Matriz<bool> m;
 		SDL_Surface *pantalla, *fondo, *bloque;
+		TTF_Font *fuente60, *fuente40;
+		SDL_Surface *textoPuntos, *textoNivel, *textoLineas;
 		
 		void inicializaSDL();
+		void inicializaTTF();
 		
 		/// Borra del tablero la pieza actual.
 		void borraPieza();

@@ -26,10 +26,9 @@ void JuegoTetris::preparar(){
 	}
 	cout<<"OK\n";
 	
-	cout<<"Preparando tablero del tetris... ";
+	cout<<"Preparando tablero del tetris... "<<endl;
 	if(mt) delete mt;
 	mt = new MatrizTetris();
-	cout<<"OK\n";
 	
 	cout<<"Preparando piezas...\n";
 	piezas = new Piezas;
