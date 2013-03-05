@@ -117,6 +117,7 @@ class MatrizTetris{
 		
 		void inicializaSDL();
 		void inicializaTTF();
+		void cargaGraficos();
 		
 		/// Borra del tablero la pieza actual.
 		void borraPieza();

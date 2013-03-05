@@ -5,8 +5,7 @@ MatrizTetris::MatrizTetris(unsigned alto, unsigned ancho) :
 {
 	inicializaSDL();
 	inicializaTTF();
-	fondo = SDL_LoadBMP("recursos/fondo.bmp");
-	bloque = SDL_LoadBMP("recursos/bloque.bmp");
+	cargaGraficos();
 	SDL_BlitSurface(fondo,NULL,pantalla,NULL);
 }
 
@@ -41,6 +40,39 @@ void MatrizTetris::inicializaTTF(){
 	cout<<"\t\tfuente40...";
 	fuente40 = TTF_OpenFont("recursos/Russian.ttf",40);
 	if(!fuente40) cout<<"FAIL"<<endl;
+	else cout<<"OK"<<endl;
+}
+
+void MatrizTetris::cargaGraficos(){
+	cout<<"\tCargando graficos..."<<endl;
+	cout<<"\t\tfondo...";
+	fondo = SDL_LoadBMP("recursos/fondo.bmp");
+	if(!fondo) cout<<"FAIL"<<endl;
+	else cout<<"OK"<<endl;
+	
+	cout<<"\t\tbloque...";
+	bloque = SDL_LoadBMP("recursos/bloque.bmp");
+	if(!bloque) cout<<"FAIL"<<endl;
+	else cout<<"OK"<<endl;
+	
+	SDL_Color color;
+	color.r = 0;
+	color.g = 0;
+	color.b = 0;
+	
+	cout<<"\t\ttextoPuntos...";
+	textoPuntos = TTF_RenderText_Blended(fuente60,"00000",color);
+	if(!textoPuntos) cout<<"FAIL"<<endl;
+	else cout<<"OK"<<endl;
+	
+	cout<<"\t\ttextoNivel...";
+	textoNivel = TTF_RenderText_Blended(fuente40,"1",color);
+	if(!textoNivel) cout<<"FAIL"<<endl;
+	else cout<<"OK"<<endl;
+	
+	cout<<"\t\ttextoLineas...";
+	textoLineas = TTF_RenderText_Blended(fuente40,"000",color);
+	if(!textoLineas) cout<<"FAIL"<<endl;
 	else cout<<"OK"<<endl;
 }
 
