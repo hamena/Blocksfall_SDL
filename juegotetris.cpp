@@ -15,7 +15,7 @@ JuegoTetris::JuegoTetris() :
 {}
 
 void JuegoTetris::preparar(){
-	//printw("Preparando vector de tiempos... "); refresh();
+	cout<<"Preparando vector de tiempos... ";
 	if(!delay){
 		int rest = 1000;
 		delay = new vector<unsigned>(9,0);
@@ -24,41 +24,41 @@ void JuegoTetris::preparar(){
 			rest -= 100;
 		}
 	}
-	//printw("OK\n"); refresh();
+	cout<<"OK\n";
 	
-	//printw("Preparando tablero del tetris... "); refresh();
+	cout<<"Preparando tablero del tetris... ";
 	if(mt) delete mt;
 	mt = new MatrizTetris();
-	//printw("OK\n"); refresh();
+	cout<<"OK\n";
 	
-	//printw("Preparando piezas...\n"); refresh();
+	cout<<"Preparando piezas...\n";
 	piezas = new Piezas;
-	//printw("\tPiezaL..."); refresh();
+	cout<<"\tPiezaL...";
 	inicializar(piezas->piezaL);
-	//printw("OK\n");
-	//printw("\tPiezaL2..."); refresh();
+	cout<<"OK\n";
+	cout<<"\tPiezaL2...";
 	inicializar(piezas->piezaL2);
-	//printw("OK\n");
-	//printw("\tPiezaS..."); refresh();
+	cout<<"OK\n";
+	cout<<"\tPiezaS...";
 	inicializar(piezas->piezaS);
-	//printw("OK\n");
-	//printw("\tPiezaS2..."); refresh();
+	cout<<"OK\n";
+	cout<<"\tPiezaS2...";
 	inicializar(piezas->piezaS2);
-	//printw("OK\n");
-	//printw("\tPiezaT..."); refresh();
+	cout<<"OK\n";
+	cout<<"\tPiezaT...";
 	inicializar(piezas->piezaT);
-	//printw("OK\n");
-	//printw("\tPiezaC..."); refresh();
+	cout<<"OK\n";
+	cout<<"\tPiezaC...";
 	inicializar(piezas->piezaC);
-	//printw("OK\n");
-	//printw("\tPiezaP..."); refresh();
+	cout<<"OK\n";
+	cout<<"\tPiezaP...";
 	inicializar(piezas->piezaP);
-	//printw("OK\n"); refresh();
+	cout<<"OK\n";
 	
-	//printw("Preparando control del tetris... "); refresh();
+	cout<<"Preparando control del tetris... ";
 	if(ct) delete ct;
 	ct = new ControlTetris(*mt,*piezas);
-	//printw("OK\n"); refresh();
+	cout<<"OK\n";
 	
 	LETSPLAYBABY = true;
 }
