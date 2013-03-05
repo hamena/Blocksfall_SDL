@@ -32,8 +32,6 @@ bool MatrizTetris::pintaPiezaEn(const Pieza& p, unsigned y, unsigned x){
 		posY = y;
 		v = p.vectorEstado();
 		for(unsigned i=0 ; i<v.size() ; i++){
-			//m1[y + v[i].first][x + v[i].second] = '#';
-			
 			d.x = XI + (x + v[i].second)*TAMBLO;
 			d.y = YI + (y + v[i].first)*TAMBLO;
 			SDL_BlitSurface(bloque,NULL,pantalla,&d);
@@ -156,20 +154,7 @@ void MatrizTetris::bajarTodo(unsigned linea){
 	}
 }
 
-void MatrizTetris::imprimeMatriz() const{
-	/*unsigned dim1 = m1.dimensionX();
-	unsigned dim2 = m2.dimensionX();
-	for(unsigned i=0 ; i<m1.dimensionY() ; i++){
-		for(unsigned j=0 ; j<dim1 ; j++)
-			addch(m1[i][j]);
-		for(unsigned j=0 ; j<dim2 ; j++)
-			addch(m2[i][j]);
-		addch('\n');
-	}
-	refresh();*/
-	
-	SDL_Flip(pantalla);
-}
+void MatrizTetris::imprimeMatriz() const{ SDL_Flip(pantalla); }
 
 ostream& operator <<(ostream& os, const MatrizTetris& mt){
 	/*unsigned dim1 = mt.m1.dimensionX();
