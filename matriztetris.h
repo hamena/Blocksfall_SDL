@@ -26,7 +26,6 @@
 #include <SDL/SDL_ttf.h>
 #include "matriz.h"
 #include "pieza.h"
-#include "contador.h"
 
 using std::ostream;
 using std::endl;
