@@ -161,6 +161,24 @@ void MatrizTetris::pintaPuntos(const Contador& c){
 	delete[] str;
 }
 
+void MatrizTetris::pintaNivel(unsigned n){
+	SDL_Rect dest;
+	char* c = new char[1];
+	c[0] = n+48;
+	textoNivel = TTF_RenderText_Blended(fuente35,c,colorFuente);
+	
+	dest.x = XIND;
+	dest.y = YN;
+	dest.w = 35;
+	dest.h = 40;
+	SDL_FillRect(pantalla,&dest,SDL_MapRGB(pantalla->format,CFIR,CFIG,CFIB));
+	
+	dest.y -= 3;	//Desplazamiento 3 px hacia arriba.
+	dest.x += 7;	//Desplazamiento 7 px a la dcha.
+	SDL_BlitSurface(textoNivel,NULL,pantalla,&dest);
+	delete[] c;
+}
+
 void MatrizTetris::pintaLineas(const Contador& c){
 	SDL_Rect dest;
 	char* str = new char[c.vectorPuntos().size()];

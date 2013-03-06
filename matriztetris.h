@@ -57,16 +57,16 @@ class MatrizTetris{
 		/// \param c Contador de puntos.
 		void pintaPuntos(const Contador& c);
 		
+		/// Pinta el nivel en la matriz que contiene la información de la partida.
+		/// \param n Nivel que se va a pintar.
+		void pintaNivel(unsigned n);
+		
 		/// Pinta el nº de lineas del contador en la matriz que contiene la información de la partida.
 		/// \param c Contador de lineas.
 		void pintaLineas(const Contador& c);
 		
 		/// Pinta en el tablero el mensaje de GAME OVER.
 		void pintaGameOver();
-		
-		/// Pinta el nivel en la matriz que contiene la información de la partida.
-		/// \param n Nivel que se va a pintar.
-		inline void pintaNivel(unsigned n);
 		
 		/// Vacía el vector estado actual.
 		inline void vaciaVector();
@@ -133,9 +133,6 @@ class MatrizTetris{
 		bool detectaColision(const vEstado& v, unsigned y, unsigned x);
 		
 };
-
-void MatrizTetris::pintaNivel(unsigned n){ //m2[15][3] = n+48; 
-}
 
 void MatrizTetris::vaciaVector(){ v.clear(); }
 
