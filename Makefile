@@ -11,7 +11,7 @@ $(EXE): $(OBJS)
 	$(CXX) $(OBJS) $(LDFLAGS) -o $(EXE)
 
 clean:
-	$(RM) *.o *~ $(EXE)
+	$(RM) *.o *~ $(EXE) $(EXEWIN)
 
 run:
 	./$(EXE)
