@@ -144,10 +144,10 @@ void MatrizTetris::pintaPiezaSig(const Pieza& p){
 	}
 }
 
-void MatrizTetris::pintaPuntos(const Contador& c){
+void MatrizTetris::pintaPuntos(unsigned n){
 	SDL_Rect dest;
-	char* str = new char[c.vectorPuntos().size()];
-	sprintf(str, "%.5d", c.numero());
+	char* str = new char[5];
+	sprintf(str, "%.5d", n);
 	textoPuntos = TTF_RenderText_Blended(fuente45,str,colorFuente);
 	
 	dest.x = XIND;
@@ -179,10 +179,10 @@ void MatrizTetris::pintaNivel(unsigned n){
 	delete[] c;
 }
 
-void MatrizTetris::pintaLineas(const Contador& c){
+void MatrizTetris::pintaLineas(unsigned n){
 	SDL_Rect dest;
-	char* str = new char[c.vectorPuntos().size()];
-	sprintf(str, "%.3d", c.numero());
+	char* str = new char[3];
+	sprintf(str, "%.3d", n);
 	textoNivel = TTF_RenderText_Blended(fuente35,str,colorFuente);
 	
 	dest.x = XIND;

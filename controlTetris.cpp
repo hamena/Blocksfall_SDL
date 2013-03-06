@@ -4,8 +4,8 @@
 
 ControlTetris::ControlTetris(MatrizTetris& mat, Piezas& ps) :
 	mt(&mat),
-	puntos(5),
-	lineas(3),
+	puntos(0),
+	lineas(0),
 	nivel(1),
 	posX(3),
 	posY(1),

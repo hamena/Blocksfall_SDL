@@ -32,13 +32,13 @@ class ControlTetris{
 		/// Pausa el juego.
 		void pause();
 		
-		/// Observa el contador de puntos.
-		/// \return Contador de puntos.
-		const Contador& getPuntos() const{ return puntos; }
+		/// Observa los puntos.
+		/// \return Nº de puntos.
+		unsigned getPuntos() const{ return puntos; }
 		
-		/// Observa el contador de lineas.
-		/// \return Contador de lineas.
-		const Contador& getLineas() const{ return lineas; }
+		/// Observa las lineas.
+		/// \return Nº de lineas.
+		unsigned getLineas() const{ return lineas; }
 		
 		/// Observa el nivel.
 		/// \return Nivel actual.
@@ -54,9 +54,9 @@ class ControlTetris{
 		
 	private:
 		MatrizTetris* mt;		///< Puntero a matriz de gráficos
-		Contador 	puntos, 	///< Contador de puntos.
-					lineas;		///< Contador de líneas.
-		unsigned 	nivel, 		///< Nivel de dificultad.
+		unsigned 	puntos, 	///< Nº de puntos.
+					lineas,		///< Nº de líneas.
+				 	nivel, 		///< Nivel de dificultad.
 					posX, 		///< Posición de la pieza en el eje X.
 					posY;		///< Posición de la pieza en el eje Y.
 		Pieza 		*p, 		///< Puntero a la pieza con la que se juega actualmente.
@@ -76,11 +76,11 @@ class ControlTetris{
 		/// Incrementa el nivel de dificultad.
 		inline void subirNivel();
 		
-		/// Incrementa el contador un número de puntos.
+		/// Incrementa el número de puntos.
 		/// \param n Puntos.
 		inline void incrementarPuntos(int n);
 		
-		/// Incrementa el contador un número de líneas.
+		/// Incrementa el número de líneas.
 		/// \param n Líneas.
 		inline void incrementarLineas(unsigned n);
 		
@@ -154,20 +154,22 @@ void ControlTetris::rotarPieza(){
 }
 
 void ControlTetris::incrementarPuntos(int n){
-	puntos.incrementar(n);
+	puntos += n;
 	mt->pintaPuntos(puntos);
-	if(unsigned(puntos.numero()) >= 10000*nivel)
+	if(unsigned(puntos) >= 10000*nivel)
 		subirNivel();
 }
 
 void ControlTetris::incrementarLineas(unsigned n){
-	lineas.incrementar(n);
+	lineas += n;
 	mt->pintaLineas(lineas);
 }
 
 void ControlTetris::cambiarNivel(unsigned n){
-	nivel = n;
-	mt->pintaNivel(nivel);
+	if(n < 9){
+		nivel = n;
+		mt->pintaNivel(nivel);
+	}
 }
 
 void ControlTetris::subirNivel(){
