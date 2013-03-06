@@ -3,6 +3,9 @@
 MatrizTetris::MatrizTetris(unsigned alto, unsigned ancho) : 
 	m( Matriz<bool>(alto,ancho,NULL) )
 {
+	colorFuente.r = 0;
+	colorFuente.g = 0;
+	colorFuente.b = 0;
 	inicializaSDL();
 	inicializaTTF();
 	cargaGraficos();
@@ -32,14 +35,14 @@ void MatrizTetris::inicializaTTF(){
 		cout<<"OK"<<endl;
 	
 	cout<<"\tCargando fuentes..."<<endl;
-	cout<<"\t\tfuente60...";
-	fuente60 = TTF_OpenFont("recursos/Russian.ttf",60);
-	if(!fuente60) cout<<"FAIL"<<endl;
+	cout<<"\t\tfuente45...";
+	fuente45 = TTF_OpenFont("recursos/Russian.ttf",45);
+	if(!fuente45) cout<<"FAIL"<<endl;
 	else cout<<"OK"<<endl;
 	
-	cout<<"\t\tfuente40...";
-	fuente40 = TTF_OpenFont("recursos/Russian.ttf",40);
-	if(!fuente40) cout<<"FAIL"<<endl;
+	cout<<"\t\tfuente35...";
+	fuente35 = TTF_OpenFont("recursos/Russian.ttf",35);
+	if(!fuente35) cout<<"FAIL"<<endl;
 	else cout<<"OK"<<endl;
 }
 
@@ -55,23 +58,18 @@ void MatrizTetris::cargaGraficos(){
 	if(!bloque) cout<<"FAIL"<<endl;
 	else cout<<"OK"<<endl;
 	
-	SDL_Color color;
-	color.r = 0;
-	color.g = 0;
-	color.b = 0;
-	
 	cout<<"\t\ttextoPuntos...";
-	textoPuntos = TTF_RenderText_Blended(fuente60,"00000",color);
+	textoPuntos = TTF_RenderText_Blended(fuente45,"00000",colorFuente);
 	if(!textoPuntos) cout<<"FAIL"<<endl;
 	else cout<<"OK"<<endl;
 	
 	cout<<"\t\ttextoNivel...";
-	textoNivel = TTF_RenderText_Blended(fuente40,"1",color);
+	textoNivel = TTF_RenderText_Blended(fuente35,"1",colorFuente);
 	if(!textoNivel) cout<<"FAIL"<<endl;
 	else cout<<"OK"<<endl;
 	
 	cout<<"\t\ttextoLineas...";
-	textoLineas = TTF_RenderText_Blended(fuente40,"000",color);
+	textoLineas = TTF_RenderText_Blended(fuente35,"000",colorFuente);
 	if(!textoLineas) cout<<"FAIL"<<endl;
 	else cout<<"OK"<<endl;
 }
@@ -130,8 +128,8 @@ void MatrizTetris::borraPieza(){
 
 void MatrizTetris::pintaPiezaSig(const Pieza& p){
 	SDL_Rect dest;
-	dest.x = 260;
-	dest.y = YS;
+	dest.x = XIND;
+	dest.y = YI;
 	dest.w = 110;
 	dest.h = 110;
 	SDL_FillRect(pantalla,&dest,SDL_MapRGB(pantalla->format,CFIR,CFIG,CFIB));
@@ -140,22 +138,45 @@ void MatrizTetris::pintaPiezaSig(const Pieza& p){
 	dest.h = TAMBLO;
 	vSig = p.vectorEstado();
 	for(unsigned i=0 ; i<vSig.size() ; i++){
-		dest.x = XS + (vSig[i].second * TAMBLO);
-		dest.y = YS + (vSig[i].first * TAMBLO);
+		dest.x = (XIND + 22) + (vSig[i].second * TAMBLO);
+		dest.y = (YI + 11) + (vSig[i].first * TAMBLO);
 		SDL_BlitSurface(bloque,NULL,pantalla,&dest);
 	}
 }
 
 void MatrizTetris::pintaPuntos(const Contador& c){
-	/*const vector<int>& v = c.vectorPuntos();
-	for(unsigned j=0 ; j<v.size() ; j++)
-		m2[9][j] = v[j] + 48;*/
+	SDL_Rect dest;
+	char* str = new char[c.vectorPuntos().size()];
+	sprintf(str, "%.5d", c.numero());
+	textoPuntos = TTF_RenderText_Blended(fuente45,str,colorFuente);
+	
+	dest.x = XIND;
+	dest.y = YP;
+	dest.w = 110;
+	dest.h = 60;
+	SDL_FillRect(pantalla,&dest,SDL_MapRGB(pantalla->format,CFIR,CFIG,CFIB));
+	
+	dest.x += 3;	//Desplazamiento 3 px a la izq
+	SDL_BlitSurface(textoPuntos,NULL,pantalla,&dest);
+	delete[] str;
 }
 
 void MatrizTetris::pintaLineas(const Contador& c){
-	/*const vector<int>& v = c.vectorPuntos();
-	for(unsigned j=0 ; j<v.size() ; j++)
-		m2[11][j+1] = v[j] + 48;*/
+	SDL_Rect dest;
+	char* str = new char[c.vectorPuntos().size()];
+	sprintf(str, "%.3d", c.numero());
+	textoNivel = TTF_RenderText_Blended(fuente35,str,colorFuente);
+	
+	dest.x = XIND;
+	dest.y = YL;
+	dest.w = 55;
+	dest.h = 40;
+	SDL_FillRect(pantalla,&dest,SDL_MapRGB(pantalla->format,CFIR,CFIG,CFIB));
+	
+	dest.y -= 3;	//Desplazamiento 3 px hacia arriba.
+	dest.x += 2;	//Desplazamiento 2 px a la izq
+	SDL_BlitSurface(textoNivel,NULL,pantalla,&dest);
+	delete[] str;
 }
 
 void MatrizTetris::pintaGameOver(){

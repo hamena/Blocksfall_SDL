@@ -8,12 +8,10 @@
 #define TAMBLO 22	// Tamaño en píxeles de un bloque
 #define XI 20		// Pixeles del marco eje x
 #define YI 20		// Pixeles del marco eje y
-#define XS 282		// X Pieza siguiente	
-#define YS 31		// Y Pieza siguiente
-#define XIND 387	// X de los indicadores
-#define YP 205		// Y del indicador PUNTOS
-#define YN 320		// Y del indicador de NIVEL
-#define YL 425		// Y del indicador de LINEAS
+#define XIND 260	// X de los indicadores 387
+#define YP 200		// Y del indicador PUNTOS
+#define YN 315		// Y del indicador de NIVEL
+#define YL 420		// Y del indicador de LINEAS
 #define CFR 75		// Color del fondo RED
 #define CFG 70		// Color del fondo GREEN
 #define CFB 70		// Color del fondo BLUE
@@ -100,8 +98,8 @@ class MatrizTetris{
 			SDL_FreeSurface(textoPuntos);
 			SDL_FreeSurface(textoNivel);
 			SDL_FreeSurface(textoLineas);
-			TTF_CloseFont(fuente60);
-			TTF_CloseFont(fuente40);
+			TTF_CloseFont(fuente45);
+			TTF_CloseFont(fuente35);
 		}
 		
 	private:
@@ -112,8 +110,9 @@ class MatrizTetris{
 						
 		Matriz<bool> m;
 		SDL_Surface *pantalla, *fondo, *bloque;
-		TTF_Font *fuente60, *fuente40;
+		TTF_Font *fuente45, *fuente35;
 		SDL_Surface *textoPuntos, *textoNivel, *textoLineas;
+		SDL_Color colorFuente;
 		
 		void inicializaSDL();
 		void inicializaTTF();
