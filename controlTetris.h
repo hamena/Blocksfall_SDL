@@ -124,7 +124,7 @@ void ControlTetris::bajarPieza(){
 	else{
 		mt->pintaPiezaEn(*p,posY,posX);
 		mt->vaciaVector();
-		incrementarPuntos(50*mult);
+		incrementarPuntos(50);
 		limpiaLineas();
 		siguientePieza();
 	}

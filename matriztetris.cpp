@@ -63,11 +63,6 @@ void MatrizTetris::cargaGraficos(){
 	if(!textoPuntos) cout<<"FAIL"<<endl;
 	else cout<<"OK"<<endl;
 	
-	cout<<"\t\ttextoMulti...";
-	textoMulti = TTF_RenderText_Blended(fuente25,"x1",colorFuente);
-	if(!textoMulti) cout<<"FAIL"<<endl;
-	else cout<<"OK"<<endl;
-	
 	cout<<"\t\ttextoNivel...";
 	textoNivel = TTF_RenderText_Blended(fuente35,"1",colorFuente);
 	if(!textoNivel) cout<<"FAIL"<<endl;
@@ -158,32 +153,17 @@ void MatrizTetris::pintaPuntos(unsigned n){
 	dest.x = XIND;
 	dest.y = YP;
 	dest.w = 110;
-	dest.h = 35;
+	dest.h = 60;
 	SDL_BlitSurface(fondo,&dest,pantalla,&dest);
 	
-	dest.y -= 4;	//Desplazamiento 4 px hacia arriba.
+	dest.y -= 4;	//Desplazamiento 2 px hacia arriba.
 	dest.x += 4;	//Desplazamiento 4 px a la izq.
 	SDL_BlitSurface(textoPuntos,NULL,pantalla,&dest);
 	delete[] str;
 }
 
 void MatrizTetris::pintaMulti(unsigned n){
-	SDL_Rect dest;
-	char* str = new char[2];
-	str[0] = 'x';
-	str[1] = n+48;
-	textoPuntos = TTF_RenderText_Blended(fuente25,str,colorFuente);
 	
-	dest.x = XIND;
-	dest.y = 235;
-	dest.w = 45;
-	dest.h = 25;
-	SDL_BlitSurface(fondo,&dest,pantalla,&dest);
-	
-	dest.y -= 5;	//Desplazamiento 4 px hacia arriba.
-	dest.x += 4;	//Desplazamiento 4 px a la izq.
-	SDL_BlitSurface(textoPuntos,NULL,pantalla,&dest);
-	delete[] str;
 }
 
 void MatrizTetris::pintaNivel(unsigned n){
