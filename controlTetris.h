@@ -4,6 +4,7 @@
 
 #include <ctime>
 #include <cstdlib>
+#include <SDL/SDL.h>
 #include "matriztetris.h"
 #include "pieza.h"
 

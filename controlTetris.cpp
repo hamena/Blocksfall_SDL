@@ -110,8 +110,10 @@ Pieza* ControlTetris::piezaAleatoria(){
 }
 
 void ControlTetris::pause(){
-	/*while(true)
-		if(ControlTetris::kbhit())				//KBHIT
-			if(getch() == 'p')
-				break;*/
+	SDL_Event e;
+	bool pausado = true;
+	while(pausado)
+		if(SDL_PollEvent(&e))
+			if(e.key.keysym.sym == SDLK_ESCAPE)
+				pausado = false;
 }

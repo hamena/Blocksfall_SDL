@@ -69,7 +69,7 @@ void JuegoTetris::iniciar(){
 		try{
 			while(SDL_PollEvent(&event)) {
 				if(event.type == SDL_KEYDOWN){		//KBHIT
-					switch(event.key.keysym.sym){
+					/*switch(event.key.keysym.sym){
 						case SDLK_DOWN:
 							ct->bajarPieza();
 							break;
@@ -85,13 +85,28 @@ void JuegoTetris::iniciar(){
 						case SDLK_SPACE:
 							ct->caerPieza();
 							break;
-						//case SDLK_p:
-							//ct->pause();
-							//break;
 						case SDLK_ESCAPE:
 							LETSPLAYBABY = false;
 							break;
-					}
+						default:
+							if(event.key.keysym.sym == SDLK_p)
+								ct->pause();
+					}*/
+					if(event.key.keysym.sym == SDLK_DOWN)
+						ct->bajarPieza();
+					else if(event.key.keysym.sym == SDLK_UP)
+						ct->rotarPieza();
+					else if(event.key.keysym.sym == SDLK_LEFT)
+						ct->moverIzqda();
+					else if(event.key.keysym.sym == SDLK_RIGHT)
+						ct->moverDrcha();
+					else if(event.key.keysym.sym == SDLK_SPACE)
+						ct->caerPieza();
+					else if(event.key.keysym.sym == SDLK_p)
+						ct->pause();
+					else if(event.key.keysym.sym == SDLK_ESCAPE)
+						LETSPLAYBABY = false;
+					
 					mt->imprimeMatriz();
 				}
 			}
