@@ -93,7 +93,7 @@ class MatrizTetris{
 			SDL_FreeSurface(textoPuntos);
 			SDL_FreeSurface(textoNivel);
 			SDL_FreeSurface(textoLineas);
-			TTF_CloseFont(fuente45);
+			TTF_CloseFont(fuente25);
 			TTF_CloseFont(fuente35);
 		}
 		

@@ -35,9 +35,9 @@ void MatrizTetris::inicializaTTF(){
 		cout<<"OK"<<endl;
 	
 	cout<<"\tCargando fuentes..."<<endl;
-	cout<<"\t\tfuente45...";
+	cout<<"\t\tfuente25...";
 	fuente25 = TTF_OpenFont("recursos/Russian.ttf",25);
-	if(!fuente45) cout<<"FAIL"<<endl;
+	if(!fuente25) cout<<"FAIL"<<endl;
 	else cout<<"OK"<<endl;
 	
 	cout<<"\t\tfuente35...";
