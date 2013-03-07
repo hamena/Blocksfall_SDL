@@ -36,7 +36,7 @@ void MatrizTetris::inicializaTTF(){
 	
 	cout<<"\tCargando fuentes..."<<endl;
 	cout<<"\t\tfuente45...";
-	fuente45 = TTF_OpenFont("recursos/Russian.ttf",45);
+	fuente25 = TTF_OpenFont("recursos/Russian.ttf",25);
 	if(!fuente45) cout<<"FAIL"<<endl;
 	else cout<<"OK"<<endl;
 	
@@ -59,7 +59,7 @@ void MatrizTetris::cargaGraficos(){
 	else cout<<"OK"<<endl;
 	
 	cout<<"\t\ttextoPuntos...";
-	textoPuntos = TTF_RenderText_Blended(fuente45,"00000",colorFuente);
+	textoPuntos = TTF_RenderText_Blended(fuente35,"00000",colorFuente);
 	if(!textoPuntos) cout<<"FAIL"<<endl;
 	else cout<<"OK"<<endl;
 	

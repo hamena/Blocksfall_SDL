@@ -105,7 +105,7 @@ class MatrizTetris{
 						
 		Matriz<bool> m;
 		SDL_Surface *pantalla, *fondo, *bloque;
-		TTF_Font *fuente45, *fuente35;
+		TTF_Font *fuente25, *fuente35;
 		SDL_Surface *textoPuntos, *textoNivel, *textoLineas;
 		SDL_Color colorFuente;
 		
