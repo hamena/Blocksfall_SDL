@@ -10,6 +10,7 @@
 #define YI 20		// Pixeles del marco eje y
 #define XIND 260	// X de los indicadores 387
 #define YP 200		// Y del indicador PUNTOS
+#define YM 235		// Y del indicador MULTIPLICADOR
 #define YN 315		// Y del indicador de NIVEL
 #define YL 420		// Y del indicador de LINEAS
 

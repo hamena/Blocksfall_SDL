@@ -175,7 +175,7 @@ void MatrizTetris::pintaMulti(unsigned n){
 	textoPuntos = TTF_RenderText_Blended(fuente25,str,colorFuente);
 	
 	dest.x = XIND;
-	dest.y = 235;
+	dest.y = YM;
 	dest.w = 45;
 	dest.h = 25;
 	SDL_BlitSurface(fondo,&dest,pantalla,&dest);
