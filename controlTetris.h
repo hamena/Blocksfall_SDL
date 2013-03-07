@@ -156,13 +156,13 @@ void ControlTetris::rotarPieza(){
 void ControlTetris::incrementarPuntos(int n){
 	puntos += n;
 	mt->pintaPuntos(puntos);
-	if(unsigned(puntos) >= 10000*nivel)
-		subirNivel();
 }
 
 void ControlTetris::incrementarLineas(unsigned n){
 	lineas += n;
 	mt->pintaLineas(lineas);
+	if(!(lineas < 12*nivel))
+		subirNivel();
 }
 
 void ControlTetris::cambiarNivel(unsigned n){
