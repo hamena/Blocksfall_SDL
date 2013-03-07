@@ -91,6 +91,7 @@ class MatrizTetris{
 			SDL_FreeSurface(fondo);
 			SDL_FreeSurface(bloque);
 			SDL_FreeSurface(textoPuntos);
+			SDL_FreeSurface(textoMulti);
 			SDL_FreeSurface(textoNivel);
 			SDL_FreeSurface(textoLineas);
 			TTF_CloseFont(fuente25);
@@ -106,7 +107,7 @@ class MatrizTetris{
 		Matriz<bool> m;
 		SDL_Surface *pantalla, *fondo, *bloque;
 		TTF_Font *fuente25, *fuente35;
-		SDL_Surface *textoPuntos, *textoNivel, *textoLineas;
+		SDL_Surface *textoPuntos, *textoMulti, *textoNivel, *textoLineas;
 		SDL_Color colorFuente;
 		
 		void inicializaSDL();
