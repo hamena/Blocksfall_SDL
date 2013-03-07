@@ -121,7 +121,7 @@ void MatrizTetris::borraPieza(){
 	for(unsigned i=0 ; i<v.size() ; i++){
 		d.x = XI + (posX + v[i].second)*TAMBLO;
 		d.y = YI + (posY + v[i].first)*TAMBLO;
-		SDL_FillRect(pantalla,&d,SDL_MapRGB(pantalla->format,CFR,CFG,CFB));
+		SDL_BlitSurface(fondo,&d,pantalla,&d);
 		m[posY + v[i].first][posX + v[i].second] = false;
 	}
 }
@@ -132,7 +132,7 @@ void MatrizTetris::pintaPiezaSig(const Pieza& p){
 	dest.y = YI;
 	dest.w = 110;
 	dest.h = 110;
-	SDL_FillRect(pantalla,&dest,SDL_MapRGB(pantalla->format,CFIR,CFIG,CFIB));
+	SDL_BlitSurface(fondo,&dest,pantalla,&dest);
 	
 	dest.w = TAMBLO;
 	dest.h = TAMBLO;
@@ -154,7 +154,7 @@ void MatrizTetris::pintaPuntos(unsigned n){
 	dest.y = YP;
 	dest.w = 110;
 	dest.h = 60;
-	SDL_FillRect(pantalla,&dest,SDL_MapRGB(pantalla->format,CFIR,CFIG,CFIB));
+	SDL_BlitSurface(fondo,&dest,pantalla,&dest);
 	
 	dest.y -= 4;	//Desplazamiento 2 px hacia arriba.
 	dest.x += 4;	//Desplazamiento 4 px a la izq.
@@ -172,7 +172,7 @@ void MatrizTetris::pintaNivel(unsigned n){
 	dest.y = YN;
 	dest.w = 35;
 	dest.h = 40;
-	SDL_FillRect(pantalla,&dest,SDL_MapRGB(pantalla->format,CFIR,CFIG,CFIB));
+	SDL_BlitSurface(fondo,&dest,pantalla,&dest);
 	
 	dest.y -= 3;	//Desplazamiento 3 px hacia arriba.
 	dest.x += 7;	//Desplazamiento 7 px a la dcha.
@@ -190,7 +190,7 @@ void MatrizTetris::pintaLineas(unsigned n){
 	dest.y = YL;
 	dest.w = 55;
 	dest.h = 40;
-	SDL_FillRect(pantalla,&dest,SDL_MapRGB(pantalla->format,CFIR,CFIG,CFIB));
+	SDL_BlitSurface(fondo,&dest,pantalla,&dest);
 	
 	dest.y -= 3;	//Desplazamiento 3 px hacia arriba.
 	dest.x += 2;	//Desplazamiento 2 px a la izq
@@ -221,7 +221,7 @@ void MatrizTetris::borraLinea(unsigned linea){
 	d.y = YI + linea*TAMBLO;
 	for(unsigned j=0 ; j<m.dimensionX() ; j++){
 		d.x = XI + j*TAMBLO;
-		SDL_FillRect(pantalla,&d,SDL_MapRGB(pantalla->format,CFR,CFG,CFB));
+		SDL_BlitSurface(fondo,&d,pantalla,&d);
 		m[linea][j] = false;
 	}
 	bajarTodo(linea-1);
@@ -241,7 +241,7 @@ void MatrizTetris::bajarTodo(unsigned linea){
 				m[i+1][j] = true;
 			}
 			else{
-				SDL_FillRect(pantalla,&d,SDL_MapRGB(pantalla->format,CFR,CFG,CFB));
+				SDL_BlitSurface(fondo,&d,pantalla,&d);
 				m[i+1][j] = false;
 			}
 		}
@@ -249,7 +249,7 @@ void MatrizTetris::bajarTodo(unsigned linea){
 	d.y = YI;
 	for(unsigned j=0 ; j<m.dimensionX() ; j++){
 		d.x = XI + j*TAMBLO;
-		SDL_FillRect(pantalla,&d,SDL_MapRGB(pantalla->format,CFR,CFG,CFB));
+		SDL_BlitSurface(fondo,&d,pantalla,&d);
 		m[0][j] = false;
 	}
 }

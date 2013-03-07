@@ -12,12 +12,6 @@
 #define YP 200		// Y del indicador PUNTOS
 #define YN 315		// Y del indicador de NIVEL
 #define YL 420		// Y del indicador de LINEAS
-#define CFR 75		// Color del fondo RED
-#define CFG 70		// Color del fondo GREEN
-#define CFB 70		// Color del fondo BLUE
-#define CFIR 128	// Color del fondo de indicadores RED
-#define CFIG 122	// Color del fondo de indicadores GREEN
-#define CFIB 122	// Color del fondo de indicadores BLUE
 
 #include <iostream>
 #include <curses.h>
@@ -38,7 +32,6 @@ class MatrizTetris{
 		///Constructor.
 		/// \param alto Alto del tablero. Por defecto 17.
 		/// \param ancho Ancho del tablero. Por defecto 10.
-		/// \param ch Carácter para dibujar los bordes. Por defecto 'X'.
 		MatrizTetris(unsigned alto=20, unsigned ancho=10);
 		
 		/// Pinta una pieza en unas coordenadas
