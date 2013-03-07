@@ -146,9 +146,9 @@ void MatrizTetris::pintaPiezaSig(const Pieza& p){
 
 void MatrizTetris::pintaPuntos(unsigned n){
 	SDL_Rect dest;
-	char* str = new char[5];
-	sprintf(str, "%.5d", n);
-	textoPuntos = TTF_RenderText_Blended(fuente45,str,colorFuente);
+	char* str = new char[6];
+	sprintf(str, "%.6d", n);
+	textoPuntos = TTF_RenderText_Blended(fuente35,str,colorFuente);
 	
 	dest.x = XIND;
 	dest.y = YP;
@@ -156,7 +156,8 @@ void MatrizTetris::pintaPuntos(unsigned n){
 	dest.h = 60;
 	SDL_FillRect(pantalla,&dest,SDL_MapRGB(pantalla->format,CFIR,CFIG,CFIB));
 	
-	dest.x += 3;	//Desplazamiento 3 px a la izq
+	dest.y -= 4;	//Desplazamiento 2 px hacia arriba.
+	dest.x += 4;	//Desplazamiento 4 px a la izq.
 	SDL_BlitSurface(textoPuntos,NULL,pantalla,&dest);
 	delete[] str;
 }
