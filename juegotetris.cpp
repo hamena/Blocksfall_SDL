@@ -68,30 +68,7 @@ void JuegoTetris::iniciar(){
 	while(LETSPLAYBABY){
 		try{
 			while(SDL_PollEvent(&event)) {
-				if(event.type == SDL_KEYDOWN){		//KBHIT
-					/*switch(event.key.keysym.sym){
-						case SDLK_DOWN:
-							ct->bajarPieza();
-							break;
-						case SDLK_UP:
-							ct->rotarPieza();
-							break;
-						case SDLK_LEFT:
-							ct->moverIzqda();
-							break;
-						case SDLK_RIGHT:
-							ct->moverDrcha();
-							break;
-						case SDLK_SPACE:
-							ct->caerPieza();
-							break;
-						case SDLK_ESCAPE:
-							LETSPLAYBABY = false;
-							break;
-						default:
-							if(event.key.keysym.sym == SDLK_p)
-								ct->pause();
-					}*/
+				if(event.type == SDL_KEYDOWN){
 					if(event.key.keysym.sym == SDLK_DOWN)
 						ct->bajarPieza();
 					else if(event.key.keysym.sym == SDLK_UP)
