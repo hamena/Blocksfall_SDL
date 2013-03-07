@@ -2,9 +2,11 @@ Repositorio para el desarrolo de Blocksfall
 
 Blocksfall es un juego tipo Tetris programado en C++
 
-Interfaz gráfica con SDL en desarrollo.
+Versión del juego: En desarrollo
 
-Para compilar el juego necesita varias bibliotecas de SDL:
+Se intentará que este repositorio tenga siempre el juego preparado para compilar y ejecutar sin problemas.
+
+Se recomienda instalar las bibliotecas de SDL:
 	- libsdl1.2-dev
 	- libsdl1.2debian
 	- libsdl-ttf2.0-0
