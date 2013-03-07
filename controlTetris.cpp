@@ -17,6 +17,7 @@ ControlTetris::ControlTetris(MatrizTetris& mat, Piezas& ps) :
 	p = piezaAleatoria();
 	mt->pintaPiezaEn(*p,posY,posX);
 	mt->pintaPuntos(puntos);
+	mt->pintaMulti(mult);
 	mt->pintaLineas(lineas);
 	mt->pintaNivel(nivel);
 	usleep(1000000);
@@ -40,7 +41,7 @@ void ControlTetris::caerPieza(){
 		posY++;
 	mt->pintaPiezaEn(*p,posY,posX);
 	mt->vaciaVector();
-	incrementarPuntos(50);
+	incrementarPuntos(50*mult);
 	limpiaLineas();
 	siguientePieza();
 }
@@ -59,11 +60,16 @@ void ControlTetris::limpiaLineas(){
 		else
 			fila--;
 	}
-	if(nFilas > mult)
+	
+	if(nFilas > mult){
 		mult = nFilas;
+		mt->pintaMulti(mult);
+	}
 	else
-		if(nFilas < mult  && nFilas != 0)
+		if(nFilas < mult  && nFilas != 0){
 			mult--;
+			mt->pintaMulti(mult);
+		}
 }
 
 Pieza* ControlTetris::piezaAleatoria(){
