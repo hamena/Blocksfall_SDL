@@ -162,6 +162,10 @@ void MatrizTetris::pintaPuntos(unsigned n){
 	delete[] str;
 }
 
+void MatrizTetris::pintaMulti(unsigned n){
+	
+}
+
 void MatrizTetris::pintaNivel(unsigned n){
 	SDL_Rect dest;
 	char* c = new char[1];

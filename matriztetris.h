@@ -45,19 +45,22 @@ class MatrizTetris{
 		/// \param p Referencia de la pieza a pintar.
 		void pintaPiezaSig(const Pieza& p);
 		
-		/// Pinta el nº de puntos en la matriz que contiene la información de la partida.
+		/// Pinta el nº de puntos en la pantalla.
 		/// \param n Puntos.
 		void pintaPuntos(unsigned n);
 		
-		/// Pinta el nivel en la matriz que contiene la información de la partida.
+		/// Pinta el multiplicador de puntos en la pantalla.
+		void pintaMulti(unsigned n);
+		
+		/// Pinta el nivel en la pantalla.
 		/// \param n Nivel.
 		void pintaNivel(unsigned n);
 		
-		/// Pinta el nº de lineas en la matriz que contiene la información de la partida.
+		/// Pinta el nº de lineas en la pantalla.
 		/// \param n Lineas.
 		void pintaLineas(unsigned n);
 		
-		/// Pinta en el tablero el mensaje de GAME OVER.
+		/// Pinta en la pantalla el mensaje de GAME OVER.
 		void pintaGameOver();
 		
 		/// Vacía el vector estado actual.
