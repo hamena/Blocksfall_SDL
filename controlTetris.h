@@ -55,6 +55,7 @@ class ControlTetris{
 	private:
 		MatrizTetris* mt;		///< Puntero a matriz de gráficos
 		unsigned 	puntos, 	///< Nº de puntos.
+					mult,		///< Multiplicador de puntos.
 					lineas,		///< Nº de líneas.
 				 	nivel, 		///< Nivel de dificultad.
 					posX, 		///< Posición de la pieza en el eje X.

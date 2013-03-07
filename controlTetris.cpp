@@ -5,6 +5,7 @@
 ControlTetris::ControlTetris(MatrizTetris& mat, Piezas& ps) :
 	mt(&mat),
 	puntos(0),
+	mult(1),
 	lineas(0),
 	nivel(1),
 	posX(3),
@@ -46,16 +47,23 @@ void ControlTetris::caerPieza(){
 
 void ControlTetris::limpiaLineas(){
 	int fila = mt->alto() - 1;
+	unsigned nFilas = 0;
 	bool linea = false;
 	while(fila >= 0 && !linea){
 		if(mt->detectaLinea(fila)){
 			incrementarLineas(1);
-			incrementarPuntos(1000);
+			incrementarPuntos(1000*mult);
 			mt->borraLinea(fila);
+			nFilas++;
 		}
 		else
 			fila--;
 	}
+	if(nFilas > mult)
+		mult = nFilas;
+	else
+		if(nFilas < mult  && nFilas != 0)
+			mult--;
 }
 
 Pieza* ControlTetris::piezaAleatoria(){
