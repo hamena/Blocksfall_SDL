@@ -84,25 +84,25 @@ Pieza* ControlTetris::piezaAleatoria(){
 	srand(time(0));
 	switch(rand()%16){
 		case 1: case 10: case 15:
-			return new Pieza2(ps->v1, ps->v2, ps->dim);
+			return new Pieza2(ps->v1, ps->v2, ps->dim, ps->bloque);
 			break;
 		case 2: case 11: case 8:
-			return new Pieza2(ps2->v1, ps2->v2, ps2->dim);
+			return new Pieza2(ps2->v1, ps2->v2, ps2->dim, ps2->bloque);
 			break;
 		case 3: case 12: case 7:
-			return new Pieza4(pl->v1, pl->v2, pl->v3, pl->v4, pl->dim);
+			return new Pieza4(pl->v1, pl->v2, pl->v3, pl->v4, pl->dim, pl->bloque);
 			break;
 		case 13: case 14: case 9:
-			return new Pieza4(pl2->v1, pl2->v2, pl2->v3, pl2->v4, pl2->dim);
+			return new Pieza4(pl2->v1, pl2->v2, pl2->v3, pl2->v4, pl2->dim, pl2->bloque);
 			break;
 		case 0: case 5:
-			return new Pieza4(pt->v1, pt->v2, pt->v3, pt->v4, pt->dim);
+			return new Pieza4(pt->v1, pt->v2, pt->v3, pt->v4, pt->dim, pt->bloque);
 			break;
 		case 6:
-			return new Pieza1(pc->v1, pc->dim);
+			return new Pieza1(pc->v1, pc->dim, pc->bloque);
 			break;
 		case 4:
-			return new Pieza2(pp->v1, pp->v2, pp->dim);
+			return new Pieza2(pp->v1, pp->v2, pp->dim, pp->bloque);
 			break;
 		default:
 			throw RandomException("PIEZA FUERA DE SWITCH");
