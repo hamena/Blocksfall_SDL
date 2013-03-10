@@ -65,7 +65,7 @@ class Pieza{
 	class Pieza4 : public Pieza{
 		public:
 			/// Constructor.
-			Pieza4(vEstado& v, vEstado& w, vEstado& x, vEstado& y, unsigned d, unsigned e=0,SDL_Surface* b) :
+			Pieza4(vEstado& v, vEstado& w, vEstado& x, vEstado& y, unsigned d,SDL_Surface* b, unsigned e=0) :
 				Pieza(d,b), estado(e), v1(v), v2(w), v3(x), v4(y)
 			{}
 			
@@ -98,7 +98,7 @@ class Pieza{
 	class Pieza2 : public Pieza{
 		public:
 			/// Constructor.
-			Pieza2(vEstado& v, vEstado& w, unsigned d, unsigned e=0, SDL_Surface* b) : 
+			Pieza2(vEstado& v, vEstado& w, unsigned d,SDL_Surface* b, unsigned e=0) : 
 				Pieza(d,b), estado(e), v1(v), v2(w)
 			{}
 			
