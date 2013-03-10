@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <utility>
+#include <SDL/SDL.h>
 
 using std::vector;
 using std::pair;
@@ -16,6 +17,7 @@ typedef struct{
 	vEstado v3;
 	vEstado v4;
 	unsigned dim;
+	SDL_Surface* bloque;
 } PiezaL;
 
 typedef struct{
@@ -24,18 +26,21 @@ typedef struct{
 	vEstado v3;
 	vEstado v4;
 	unsigned dim;
+	SDL_Surface* bloque;
 } PiezaL2;
 
 typedef struct{
 	vEstado v1;
 	vEstado v2;
 	unsigned dim;
+	SDL_Surface* bloque;
 } PiezaS;
 
 typedef struct{
 	vEstado v1;
 	vEstado v2;
 	unsigned dim;
+	SDL_Surface* bloque;
 } PiezaS2;
 
 typedef struct{
@@ -44,17 +49,20 @@ typedef struct{
 	vEstado v3;
 	vEstado v4;
 	unsigned dim;
+	SDL_Surface* bloque;
 } PiezaT;
 
 typedef struct{
 	vEstado v1;
 	unsigned dim;
+	SDL_Surface* bloque;
 } PiezaC;
 
 typedef struct{
 	vEstado v1;
 	vEstado v2;
 	unsigned dim;
+	SDL_Surface* bloque;
 } PiezaP;
 
 typedef struct{

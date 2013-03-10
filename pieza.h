@@ -29,7 +29,7 @@ class Pieza{
 	public:
 		/// Constructor.
 		/// \param d Dimensión de la pieza.
-		Pieza(unsigned d) : dim(d) {}
+		Pieza(unsigned d, SDL_Surface* b) : dim(d), bloq(b) {}
 		
 		/// Rota la pieza al siguiente estado.
 		virtual void rotar(){}
@@ -42,10 +42,15 @@ class Pieza{
 		/// \return Dimensión.
 		unsigned dimension() const{ return dim; }
 		
+		/// Observa el puntero al gráfico del bloque.
+		/// \return Puntero al bloque.
+		SDL_Surface* bloque() const{ return bloq; }
+		
 		virtual ~Pieza(){}
 		
 	private:
 		unsigned dim;	///< Dimensión de la pieza.
+		SDL_Surface * bloq;
 		
 };
 
@@ -60,8 +65,8 @@ class Pieza{
 	class Pieza4 : public Pieza{
 		public:
 			/// Constructor.
-			Pieza4(vEstado& v, vEstado& w, vEstado& x, vEstado& y, unsigned d, unsigned e=0) :
-				Pieza(d), estado(e), v1(v), v2(w), v3(x), v4(y)
+			Pieza4(vEstado& v, vEstado& w, vEstado& x, vEstado& y, unsigned d, unsigned e=0,SDL_Surface* b) :
+				Pieza(d,b), estado(e), v1(v), v2(w), v3(x), v4(y)
 			{}
 			
 			/// Rota la pieza al siguiente estado.
@@ -93,7 +98,9 @@ class Pieza{
 	class Pieza2 : public Pieza{
 		public:
 			/// Constructor.
-			Pieza2(vEstado& v, vEstado& w, unsigned d, unsigned e=0): Pieza(d), estado(e), v1(v), v2(w){}
+			Pieza2(vEstado& v, vEstado& w, unsigned d, unsigned e=0, SDL_Surface* b) : 
+				Pieza(d,b), estado(e), v1(v), v2(w)
+			{}
 			
 			/// Rota la pieza al siguiente estado.
 			void rotar();
@@ -121,7 +128,7 @@ class Pieza{
 	class Pieza1 : public Pieza{
 		public:
 			/// Constructor.
-			Pieza1(vEstado& v, unsigned d) : Pieza(d), v1(v){}
+			Pieza1(vEstado& v, unsigned d, SDL_Surface* b) : Pieza(d,b), v1(v){}
 			
 			/// Rota la pieza al siguiente estado.
 			inline void rotar(){}
