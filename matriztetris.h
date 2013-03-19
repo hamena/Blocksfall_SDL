@@ -76,8 +76,8 @@ class MatrizTetris{
 		/// \return Verdadero si hay linea completa, falso si no.
 		bool detectaLinea(int fila);
 		
-		/// Imprime la matriz completa a través de funciones de curses.h
-		void imprimeMatriz() const;
+		/// Actualiza la pantalla
+		inline void imprimeMatriz() const;
 		
 		int alto() const{ return m.dimensionY(); }
 		int ancho() const{ return m.dimensionX(); }
@@ -132,5 +132,7 @@ class MatrizTetris{
 };
 
 void MatrizTetris::vaciaVector(){ v.clear(); }
+
+void MatrizTetris::imprimeMatriz() const{ SDL_Flip(pantalla); }
 
 #endif
