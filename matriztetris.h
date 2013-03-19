@@ -15,7 +15,6 @@
 #define YL 420		// Y del indicador de LINEAS
 
 #include <iostream>
-#include <curses.h>
 #include <string>
 #include <SDL/SDL.h>
 #include <SDL/SDL_ttf.h>

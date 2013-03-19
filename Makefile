@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -Wall -ansi -pedantic
-LDFLAGS = -lncurses -lSDL -lSDL_ttf
+LDFLAGS = -lSDL -lSDL_ttf
 EXE = blocksfall
 EXEWIN = blocksfall.exe
 OBJS = main.o pieza.o matriztetris.o controlTetris.o juegotetris.o piezas_src.o
