@@ -282,8 +282,6 @@ void MatrizTetris::bajarTodo(unsigned linea){
 	}
 }
 
-void MatrizTetris::imprimeMatriz() const{ SDL_Flip(pantalla); }
-
 ostream& operator <<(ostream& os, const MatrizTetris& mt){
 	/*unsigned dim1 = mt.m1.dimensionX();
 	unsigned dim2 = mt.m2.dimensionX();
