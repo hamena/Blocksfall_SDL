@@ -53,11 +53,6 @@ void MatrizTetris::cargaGraficos(){
 	if(!fondo) cout<<"FAIL"<<endl;
 	else cout<<"OK"<<endl;
 	
-	cout<<"\t\tbloque...";
-	bloque = SDL_LoadBMP("recursos/bloque.bmp");
-	if(!bloque) cout<<"FAIL"<<endl;
-	else cout<<"OK"<<endl;
-	
 	cout<<"\t\ttextoPuntos...";
 	textoPuntos = TTF_RenderText_Blended(fuente35,"00000",colorFuente);
 	if(!textoPuntos) cout<<"FAIL"<<endl;

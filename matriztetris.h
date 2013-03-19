@@ -89,7 +89,6 @@ class MatrizTetris{
 		
 		~MatrizTetris(){
 			SDL_FreeSurface(fondo);
-			SDL_FreeSurface(bloque);
 			SDL_FreeSurface(textoPuntos);
 			SDL_FreeSurface(textoMulti);
 			SDL_FreeSurface(textoNivel);
@@ -105,7 +104,7 @@ class MatrizTetris{
 						posY;	///< Posición de la pieza actual en el eje Y.
 						
 		Matriz<bool> m;
-		SDL_Surface *pantalla, *fondo, *bloque;
+		SDL_Surface *pantalla, *fondo;
 		TTF_Font *fuente25, *fuente35;
 		SDL_Surface *textoPuntos, *textoMulti, *textoNivel, *textoLineas;
 		SDL_Color colorFuente;
